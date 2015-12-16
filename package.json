@@ -1,0 +1,30 @@
+{
+  "name": "zabbix-relay",
+  "version": "0.0.1",
+  "description": "A client for exporting history data from zabbix to time-series database",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jojohappy/zabbix-relay.git"
+  },
+  "keywords": [
+    "zabbix",
+    "client",
+    "time-series"
+  ],
+  "author": "Michael Dai",
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "influx": "^4.0.1",
+    "zabbix-node": "^0.2.0",
+    "mysql": "^2.9.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "should": "^8.0.1"
+  },
+  "license": "MIT"
+}
