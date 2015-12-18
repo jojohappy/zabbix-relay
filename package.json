@@ -21,7 +21,10 @@
     "influx": "^4.0.1",
     "zabbix-node": "^0.2.0",
     "mysql": "^2.9.0",
-    "request": "^2.67.0"
+    "request": "^2.67.0",
+    "elasticsearch": "^10.0.1",
+    "moment": "^2.10.6",
+    "shasum": "^1.0.1"
   },
   "devDependencies": {
     "mocha": "^2.2.5",
