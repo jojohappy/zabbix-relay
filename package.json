@@ -24,7 +24,8 @@
     "request": "^2.67.0",
     "elasticsearch": "^10.0.1",
     "moment": "^2.10.6",
-    "shasum": "^1.0.1"
+    "shasum": "^1.0.1",
+    "yargs": "^3.31.0"
   },
   "devDependencies": {
     "mocha": "^2.2.5",
