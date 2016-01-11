@@ -36,17 +36,34 @@ module.exports = {
 };
 ```
 
+Zabbix relay support both cli and shell mode.
+
+```
+[root@localhost zabbix-relay]# node server.js --help
+Usage: server.js <command> [options]
+
+Commands:
+  shell    Run with shell
+  command  Run with arguments
+
+Options:
+  -h, --help  Show help                                                [boolean]
+```
+
+
+### Shell
+
 Run command
 
 ```
-NODE_ENV=production node server.js
+NODE_ENV=production node server.js shell
 ```
 
 Choose the target
 
 ```
 Zabbix Relay
-Welcome, choose the storage that you want to relay
+Welcome, choose the time-series database that you want to relay
 [1] Influxdb
 [2] Open-falcon
 [3] Elasticsearch
@@ -69,6 +86,31 @@ Please input the time period
 e.g. YYYY-MM-DD|YYYY-MM-DD
 > 2015-12-21|2015-12-25
 ```
+
+
+### CLI
+
+```
+[root@localhost zabbix-relay]# node server.js command
+Options:
+  -d, --database   time-series database
+              [string] [required] [choices: "elastic", "influxdb", "openFalcon"]
+  -g, --hostgroup  zabbix hostgroup                          [string] [required]
+  -t, --type       history type
+                      [string] [choices: "history", "trends"] [default: "trends"]
+  -p, --period     time period. e.g. YYYY-MM-DD|YYYY-MM-DD   [string] [required]
+  -u, --uri        the uri for time-series database
+                   influxdb: user:password@host:port/database
+                   open-falcon&elasticsearch: host:port
+                   [string] [required]
+```
+
+Run command
+
+```
+NODE_ENV=production node server.js command -d elastic -g 'Test Group' -p '2015-12-21|2015-12-25' -t 'trends' -u 'test:test@localhost:8086/mydb'
+```
+
 
 ## Contribute
 
