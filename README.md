@@ -15,6 +15,12 @@ A client for exporting history data from zabbix to time-series database and anot
 * opentsdb
 * prometheus
 
+## Pre-install
+
+```
+npm install
+```
+
 ## Example
 
 You should create the configuration file named config.production.js that specify the configuration of zabbix api and zabbix database first. 
@@ -26,7 +32,7 @@ module.exports = {
     user: 'root',
     password: '',
     database: 'zabbix',
-    port: 3308
+    port: 3306
   },
   zabbix: {
     url: 'http://localhost/zabbix/api_jsonrpc.php',
@@ -82,8 +88,8 @@ Choose history or trends
 [1] History
 [2] Trends
 > 1
-Please input the time period
-e.g. YYYY-MM-DD|YYYY-MM-DD
+Please input the time period or last
+e.g. YYYY-MM-DD HH:mm:ss|YYYY-MM-DD HH:mm:ss, 5m, 1h, 2d, 3w, 1M
 > 2015-12-21|2015-12-25
 ```
 
@@ -91,18 +97,21 @@ e.g. YYYY-MM-DD|YYYY-MM-DD
 ### CLI
 
 ```
-[root@localhost zabbix-relay]# node server.js command
+[root@localhost zabbix-relay]# node server.js command -h
 Options:
   -d, --database   time-series database
               [string] [required] [choices: "elastic", "influxdb", "openFalcon"]
   -g, --hostgroup  zabbix hostgroup                          [string] [required]
   -t, --type       history type
-                      [string] [choices: "history", "trends"] [default: "trends"]
-  -p, --period     time period. e.g. YYYY-MM-DD|YYYY-MM-DD   [string] [required]
+                      [string] [choices: "history", "trends"] [default: "trend"]
+  -p, --period     time period. e.g. YYYY-MM-DD HH:mm:ss|YYYY-MM-DD HH:mm:ss
+                                                                        [string]
   -u, --uri        the uri for time-series database
-                   influxdb: user:password@host:port/database
-                   open-falcon&elasticsearch: host:port
-                   [string] [required]
+                   influxdb:
+                   user:password@host:port/database
+                   open-falcon&elasticsearch:
+                   host:port                                 [string] [required]
+  -l, --last       time to current date. e.g. 5m, 1h, 2d, 3w, 1M        [string]
 ```
 
 Run command
@@ -111,6 +120,11 @@ Run command
 NODE_ENV=production node server.js command -d elastic -g 'Test Group' -p '2015-12-21|2015-12-25' -t 'trends' -u 'test:test@localhost:8086/mydb'
 ```
 
+Or
+
+```
+NODE_ENV=production node server.js command -d elastic -g 'Test Group' -l 30m -t 'trends' -u 'test:test@localhost:8086/mydb'
+```
 
 ## Contribute
 
