@@ -1,0 +1,14 @@
+{
+  "mysql": {
+    "host": "localhost",
+    "user": "zabbix",
+    "password": "zabbix",
+    "database": "zabbix",
+    "port": "3306"
+  },
+  "zabbix": {
+    "url": "http://localhost/zabbix/api_jsonrpc.php",
+    "username": "Admin",
+    "password": "zabbix"
+  }
+}
