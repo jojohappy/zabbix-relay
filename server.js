@@ -1,6 +1,6 @@
 var mysqlConfig = require('./config.js').mysql;
 var mysql = require('mysql');
-var run = require('./lib/relay');
+var exec = require('./lib/exec');
 
 function initApp() {
   var connection = mysql.createConnection(mysqlConfig);
@@ -9,7 +9,7 @@ function initApp() {
       console.error('error mysql connecting: ' + err.stack);
       process.exit(1);
     }
-    run(connection);
+    exec(connection);
   });
 }
 
