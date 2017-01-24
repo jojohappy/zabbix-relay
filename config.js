@@ -19,5 +19,4 @@ var config = function() {
   return _.merge(defaultConfig, require('./config.json'));
 };
 
-var env = process.env.NODE_ENV || 'development';
 module.exports = config();
