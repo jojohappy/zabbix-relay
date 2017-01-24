@@ -23,23 +23,23 @@ npm install
 
 ## Example
 
-You should create the configuration file named config.production.js that specify the configuration of zabbix api and zabbix database first. 
+You should create the configuration file named config.json that specify the configuration of zabbix api and zabbix database first. 
 
 ```
-module.exports = {
-  mysql: {
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'zabbix',
-    port: 3306
+{
+  "mysql": {
+    "host": "localhost",
+    "user": "zabbix",
+    "password": "zabbix",
+    "database": "zabbix",
+    "port": "3306"
   },
-  zabbix: {
-    url: 'http://localhost/zabbix/api_jsonrpc.php',
-    username: 'Admin',
-    password: 'zabbix'
+  "zabbix": {
+    "url": "http://localhost/zabbix/api_jsonrpc.php",
+    "username": "Admin",
+    "password": "zabbix"
   }
-};
+}
 ```
 
 Zabbix relay support both cli and shell mode.
@@ -62,7 +62,7 @@ Options:
 Run command
 
 ```
-NODE_ENV=production node server.js shell
+node server.js shell
 ```
 
 Choose the target
@@ -117,13 +117,13 @@ Options:
 Run command
 
 ```
-NODE_ENV=production node server.js command -d elastic -g 'Test Group' -p '2015-12-21|2015-12-25' -t 'trends' -u 'test:test@localhost:8086/mydb'
+node server.js command -d elastic -g 'Test Group' -p '2015-12-21|2015-12-25' -t 'trends' -u 'test:test@localhost:8086/mydb'
 ```
 
 Or
 
 ```
-NODE_ENV=production node server.js command -d elastic -g 'Test Group' -l 30m -t 'trends' -u 'test:test@localhost:8086/mydb'
+node server.js command -d elastic -g 'Test Group' -l 30m -t 'trends' -u 'test:test@localhost:8086/mydb'
 ```
 
 ## Contribute
